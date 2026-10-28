@@ -31,11 +31,11 @@ draft_discharge_meds. Rules: base/references/discharge-rules.md.
 5. Hand `reconciliation_report` to summary-draft and patient-instructions; never re-derive the list downstream.
 ## Output
 `reconciliation_report` on the contract: `{expected_discharge_meds[{drug, dose, status, reason, source_note,
-documented_date}], discrepancies[{drug, type, detail, citation, source_note, documented_date}], clean, source}`
+documented_date}], stopped_meds[{drug, status, reason, source_note, documented_date}], discrepancies[{drug, type, detail, citation, source_note, documented_date}], clean, source}`
 plus one escalation string per discrepancy. `expected_discharge_meds` lists only medications expected to be
 active at discharge; `reason` is present only when an inpatient start or change set it. A medication stopped
-in-house is not on that list - its stop and reason stay on `inpatient_changes[]`, and it surfaces as a discrepancy
-if the draft mishandles it. `unrecognised_actions[]` appears only when an inpatient change has an action other than
+in-house is not on that list - it is on `stopped_meds` with its stop reason and citation (so summary-draft can show
+the discontinuation), and it surfaces as a discrepancy if the draft mishandles it. `unrecognised_actions[]` appears only when an inpatient change has an action other than
 start/stop/change. Seven discrepancy types, each mirroring a numbered rule:
 - `unresolved_stop_reappeared` (#1) - a stopped drug carried forward without a new order.
 - `missing_from_discharge` (#4) - an expected active drug absent from the draft, or listed there with a stop
@@ -47,11 +47,12 @@ start/stop/change. Seven discrepancy types, each mirroring a numbered rule:
 - `change_to_absent_med` (#8) - a documented change naming a drug that is not on the expected list.
 - `change_provenance_missing` (#9) - an inpatient change with no documenting note and date.
 ### Output format
-Sections: engine summary line, `expected_discharge_meds`, discrepancies (one bullet each with type, rule and
+Sections: engine summary line, `expected_discharge_meds`, `stopped_meds`, discrepancies (one bullet each with type, rule and
 citation), escalations. Example (scenario-b demo record, engine output):
 ```
 med_reconcile: expected=1 discrepancies=1 clean=False
 expected_discharge_meds: amlodipine 5mg daily, active [RN med history, 2026-09-11]
+stopped_meds: metformin, stopped - held for contrast-induced AKI risk [Nephrology consult note, 2026-09-13]
 - metformin: unresolved_stop_reappeared (discharge-rules.md #1) [Nephrology consult note, 2026-09-13]
 ```
 ## Grounding requirements

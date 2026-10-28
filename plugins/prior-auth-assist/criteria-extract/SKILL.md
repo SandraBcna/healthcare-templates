@@ -26,7 +26,7 @@ evidence-match; `config/payer-policy-library.json`.
 
 ## Workflow
 1. Confirm `request.service` and `request.payer` are present. `request.clause`, when set by policy-ingest, must equal the library clause, and so must `request.order_clause` when the order named one; the engine resolves the clause from the library and escalates any mismatch. The library entry applies only to its own payer; for any other payer the engine returns out_of_scope.
-2. Run the criteria engine (tool, from the plugin root): `python3 base/scripts/criteria_engine.py --question <contract.json> --policy config/payer-policy-library.json --out <contract.out.json>`. Never compute or estimate the result by reading the policy yourself.
+2. Run the criteria engine (tool, run from this skill's folder - the directory containing this SKILL.md, where `base/scripts/` and `config/` live; give the contract paths as absolute paths or relative to that folder): `python3 base/scripts/criteria_engine.py --question <contract.json> --policy config/payer-policy-library.json --out <contract.out.json>`. Never compute or estimate the result by reading the policy yourself.
 3. Record `criteria_met`, each entry carrying the source_note, note_date and quote that satisfied it.
 4. Record `gaps`, each naming its policy clause, evidence_key and reason (no_evidence or evidence_uncited).
 5. Read `determination` from the engine - exactly one of packet_assembled_clean, packet_assembled_gaps, out_of_scope - and restate it verbatim; never reword it as approved, denied or "cleared".

@@ -34,8 +34,9 @@ config/followup-rules.json (required fields, allowed owners, max_days_to_first_f
 `followup_checklist[{item, owner, due_date, source_note, documented_date, category}]` on the contract, plus
 `followup_report {items_checked, pending_results_checked, referral_orders_checked, gaps[{subject, type, detail,
 citation}], complete, citation, config, source}` and one escalation per gap. Gap types: `missing_field`,
-`owner_not_allowed`, `due_date_out_of_window`, `untracked_order` (a pending result or referral with no checklist
-item). Maps to the C-CDA Plan of Treatment section (LOINC 18776-5) / FHIR R4 ServiceRequest and DiagnosticReport.
+`owner_not_allowed`, `due_date_out_of_window`, `due_date_unverifiable` (a due date that is not YYYY-MM-DD, or a
+missing/unreadable discharge date, so the window cannot be checked), `untracked_order` (a pending result or referral
+with no checklist item). Maps to the C-CDA Plan of Treatment section (LOINC 18776-5) / FHIR R4 ServiceRequest and DiagnosticReport.
 ### Output format
 Sections: a table with columns item | category | owner | due date | citation, marked DRAFT for clinician approval,
 then the `followup_report` summary and the escalation list. Example (scenario-b demo record):

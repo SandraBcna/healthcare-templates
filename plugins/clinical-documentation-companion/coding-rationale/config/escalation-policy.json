@@ -1,9 +1,9 @@
 {
   "routees": {
     "override_refusal": {
-      "name": "M. Alvarez",
-      "role": "Quality & Compliance Lead",
-      "contact": "quality-compliance@example-health.org"
+      "name": "[TO CONFIGURE: quality/compliance contact name for override refusals]",
+      "role": "[TO CONFIGURE: role]",
+      "contact": "[TO CONFIGURE: contact channel]"
     },
     "unsupported_claim_element": {
       "name": "attending clinician of record",

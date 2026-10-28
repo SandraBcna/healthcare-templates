@@ -318,6 +318,13 @@
           },
           "description": "Cited medication objects sorted by drug; each carries source_note and documented_date."
         },
+        "stopped_meds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/medication"
+          },
+          "description": "1.0.3: medications stopped in-house (status stopped), sorted by drug, each with its stop reason, source_note and documented_date."
+        },
         "discrepancies": {
           "type": "array",
           "items": {
@@ -438,6 +445,7 @@
                   "missing_field",
                   "owner_not_allowed",
                   "due_date_out_of_window",
+                  "due_date_unverifiable",
                   "untracked_order"
                 ]
               },

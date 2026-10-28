@@ -27,7 +27,7 @@ The order (requested service and payer, verbatim); the payer medical policy / co
 
 ## Workflow
 1. Read the order and copy the requested service and payer verbatim - do not normalise a service name into one that happens to exist in the library. If the order already names a policy clause, copy that clause verbatim as well.
-2. Look up the service key in `config/payer-policy-library.json` (read-only file tool, e.g. `python3 -c "import json;print(json.load(open('config/payer-policy-library.json')).get('<service>'))"` from the plugin root).
+2. Look up the service key in `config/payer-policy-library.json` (read-only file tool, e.g. `python3 -c "import json;print(json.load(open('config/payer-policy-library.json')).get('<service>'))"` run from this skill's folder - the directory containing this SKILL.md, where `config/` lives).
 3. If there is an exact entry, take its `clause` value exactly as written.
 4. If there is no exact entry, set `clause` to JSON `null`, record the out-of-scope hand-off, and do not substitute a related clause.
 5. If two library entries could plausibly govern the service, choose neither: name both and escalate to the prior-auth coordinator (`config/escalation-contacts.json`).

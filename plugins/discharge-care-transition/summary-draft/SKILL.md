@@ -23,7 +23,9 @@ encounter; reconciliation_report; the cited source_note/documented_date carried 
 1. If `reconciliation_report` is absent from the contract, run med-reconcile first (engine tool
    `python3 base/scripts/med_reconcile.py --question <payload> --out <payload>`); never re-derive the list here.
 2. Draft the discharge summary sections in order: hospital course, procedures, results, medications, disposition.
-3. Build the medication section only from `reconciliation_report.expected_discharge_meds`, carrying each citation.
+3. Build the medication section only from the engine output: every `reconciliation_report.expected_discharge_meds`
+   entry as active, then every `reconciliation_report.stopped_meds` entry as "stopped" with its reason, each carrying
+   its citation - a documented discontinuation is never dropped from the summary.
 4. If `reconciliation_report.clean` is false, add an explicit medication-section open-items list, one line per
    discrepancy with its type, rule citation and documenting note.
 5. Mark the summary draft, pending clinician signature, and state the blocked status when it is not clean.
@@ -40,12 +42,14 @@ Example (scenario-b demo record):
 ```
 DRAFT - pending clinician signature | blocked-pending-reconciliation
 4. MEDICATIONS - amlodipine 5mg daily, active [Home medication list reconciled at admission (RN med history), 2026-09-11]
+4. MEDICATIONS - metformin, stopped: held for contrast-induced AKI risk, not restarted pending renal recovery [Nephrology consult note, 2026-09-13]
 OPEN ITEMS - metformin: unresolved_stop_reappeared (discharge-rules.md #1) [Nephrology consult note, 2026-09-13]
 2. PROCEDURES - GAP: no procedure note on the contract
 ```
 ## Grounding requirements
-The medication section is drawn only from reconciliation_report.expected_discharge_meds, never re-derived
-independently, and carries each medication's source_note and documented_date. **Never fabricate:** no course
+The medication section is drawn only from reconciliation_report.expected_discharge_meds and
+reconciliation_report.stopped_meds, never re-derived independently, and carries each medication's source_note and
+documented_date. **Never fabricate:** no course
 detail, result, date, dose or disposition is written unless it is on the contract with a citation; gaps are named
 as gaps in the draft rather than filled with plausible clinical prose.
 ## Constraints

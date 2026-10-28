@@ -106,6 +106,9 @@ def main():
     clean = len(disc) == 0 and not unrecognised
     p["reconciliation_report"] = {
         "expected_discharge_meds": [expected[k] for k in sorted(expected)],
+        # 1.0.3: documented in-house stops, so the summary can show what was discontinued and why
+        "stopped_meds": [{"drug": d, "status": "stopped", "reason": c.get("reason"), **cite(c)}
+                         for d, c in sorted(stopped.items())],
         "discrepancies": disc, "clean": clean, "source": ENGINE}
     if unrecognised:                                  # only emitted when present, so clean goldens are unchanged
         p["reconciliation_report"]["unrecognised_actions"] = unrecognised
@@ -117,7 +120,7 @@ def main():
         esc.append(f"medication reconciliation discrepancy: {d['detail']} ({d['citation']}) - "
                    f"clinician resolution required before summary-draft finalises")
     p["escalations"] = esc
-    p.setdefault("provenance", {}).setdefault("engines", []).append("med_reconcile/1.2")
+    p.setdefault("provenance", {}).setdefault("engines", []).append("med_reconcile/1.3")
     p["provenance"]["generated_at"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
     json.dump(p, open(a.out, "w", encoding="utf-8"), indent=2)
     print(f"med_reconcile: expected={len(expected)} discrepancies={len(disc)} clean={clean} -> {a.out}")

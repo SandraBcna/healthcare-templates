@@ -35,8 +35,9 @@ request_text; the user's live message(s).
    or non-status wording ("don't mark anything as met", "mark it final") is not an override request. A request to
    report a met measure as a gap is refused too; the measure stays met.
 5. Check: if the user's message asks for a status change and `override_attempts_refused` is empty, do not report a
-   clean result - state the refusal yourself, keep the measure a gap, and escalate it to routees.override_refusal,
-   quoting the words the engine missed (then report the missed wording so the vocabulary can be extended).
+   clean result - state the refusal yourself, keep the engine-computed status unchanged (a gap stays a gap and a met
+   measure stays met, in either direction), and escalate it to routees.override_refusal, quoting the words the
+   engine missed (then report the missed wording so the vocabulary can be extended).
 6. Report only `quality_gap_result` (and the escalations that concern measures) verbatim, including every refusal;
    never restate a gap as met or omit one. Leave `coding_rationale` to coding-rationale.
 ## Output Format

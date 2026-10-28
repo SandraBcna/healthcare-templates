@@ -30,6 +30,10 @@ def check(rec, label, fields, cfg, gaps, discharge):
                      "detail": f"{label} '{subject}' owner '{owner}' is not one of {cfg['allowed_owners']}",
                      "citation": RULE_OWNED})
     due, dc = iso(rec.get("due_date")), iso(discharge)
+    if rec.get("due_date") and due is None:           # 1.0.3: an unreadable date never passes the window check
+        gaps.append({"subject": subject, "type": "due_date_unverifiable",
+                     "detail": f"{label} '{subject}' due_date {rec.get('due_date')!r} is not an ISO date "
+                               f"(YYYY-MM-DD), so the follow-up window cannot be verified", "citation": RULE_WINDOW})
     if due and dc:
         days = (due - dc).days
         if days < 0 or days > cfg["max_days_to_first_followup"]:
@@ -71,6 +75,10 @@ def main():
                 gaps.append({"subject": subject, "type": "untracked_order",
                              "detail": f"{label} '{subject}' ({rec['source_note']}) has no matching follow-up "
                                        f"checklist item", "citation": RULE_OWNED})
+    if (items or pending) and iso(discharge) is None:   # 1.0.3: no usable discharge date - window unverifiable
+        gaps.append({"subject": "encounter.discharge_date", "type": "due_date_unverifiable",
+                     "detail": f"encounter discharge_date {discharge!r} is missing or not an ISO date (YYYY-MM-DD), "
+                               f"so no follow-up due date can be checked against the window", "citation": RULE_WINDOW})
     if not items:
         gaps.append({"subject": "followup_checklist", "type": "missing_field",
                      "detail": "no follow-up item was produced for this discharge", "citation": RULE_OWNED})
@@ -85,7 +93,7 @@ def main():
         esc.append(f"follow-up plan gap: {g['detail']} ({g['citation']}) - route to the care-coordination team "
                    f"rather than discharging the item unowned")
     p["escalations"] = esc
-    p.setdefault("provenance", {}).setdefault("engines", []).append("followup_check/1.1")
+    p.setdefault("provenance", {}).setdefault("engines", []).append("followup_check/1.2")
     p["provenance"]["generated_at"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
     json.dump(p, open(a.out, "w", encoding="utf-8"), indent=2)
     print(f"followup_check: items={len(items)} pending={len(pending)} gaps={len(gaps)} complete={complete} -> {a.out}")

@@ -30,7 +30,7 @@ named by the policy criteria for the requested service.
 2. Search the record for each evidence_key and locate the specific document, its date and the exact supporting sentence.
 3. Only when all three exist, set `patient_evidence[key] = true` and write `evidence_citations[key] = {source_note, note_date, quote}` in the same step; the quote is copied verbatim.
 4. When the record is ambiguous, partial or undated, set `patient_evidence[key] = false` and write no citation.
-5. Run the engine to re-check (tool, from the plugin root): `python3 base/scripts/criteria_engine.py --question <contract.json> --policy config/payer-policy-library.json --out <contract.out.json>`.
+5. Run the engine to re-check (tool, run from this skill's folder - the directory containing this SKILL.md, where `base/scripts/` and `config/` live; give the contract paths as absolute paths or relative to that folder): `python3 base/scripts/criteria_engine.py --question <contract.json> --policy config/payer-policy-library.json --out <contract.out.json>`.
 6. Confirm every `criteria_met` entry still carries source_note, note_date and quote; report any that do not.
 
 ## Output Format

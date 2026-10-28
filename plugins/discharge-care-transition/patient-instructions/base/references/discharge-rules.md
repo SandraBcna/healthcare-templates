@@ -40,7 +40,9 @@ A drug stopped during the stay must appear in draft_discharge_meds carrying a st
 see the decision. **Removing the drug from the draft entirely is itself a discrepancy** and never produces a clean
 reconciliation: hiding the problem is not allowed to be the cheapest path. A stopped drug listed with a stop status
 but no stop reason (`reason` empty or absent on the draft entry) is not documented either and is the same
-discrepancy (1.0.3).
+discrepancy (1.0.3). The engine also lists every in-house stop, with its reason and citation, on
+`reconciliation_report.stopped_meds` so the discharge summary shows what was discontinued even when reconciliation is
+clean.
 Engine discrepancy type: `stopped_med_undocumented`.
 
 ## #6 Nothing appears on the discharge list that was not on admission or started in-house
@@ -73,5 +75,7 @@ Engine report: `followup_report`; gap types `missing_field`, `owner_not_allowed`
 
 ## #11 Follow-up dates fall inside the configured window
 A follow-up due date later than `max_days_to_first_followup` days after the discharge date, or earlier than the
-discharge date, is a gap - dates come from orders, never from invention.
-Engine gap type: `due_date_out_of_window`.
+discharge date, is a gap - dates come from orders, never from invention. A due date that is not an ISO date
+(YYYY-MM-DD), or a missing or unreadable encounter discharge date, means the window cannot be verified - that is a
+gap too, so the checklist is never complete without a checkable date.
+Engine gap types: `due_date_out_of_window`, `due_date_unverifiable`.
