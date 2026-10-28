@@ -42,7 +42,8 @@ reconciliation: hiding the problem is not allowed to be the cheapest path. A sto
 but no stop reason (`reason` empty or absent on the draft entry) is not documented either and is the same
 discrepancy (1.0.3). The engine also lists every in-house stop, with its reason and citation, on
 `reconciliation_report.stopped_meds` so the discharge summary shows what was discontinued even when reconciliation is
-clean.
+clean, and the patient instruction sheet tells the patient in plain words to stop or hold each one that has no open
+discrepancy.
 Engine discrepancy type: `stopped_med_undocumented`.
 
 ## #6 Nothing appears on the discharge list that was not on admission or started in-house

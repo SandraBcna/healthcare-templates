@@ -90,7 +90,9 @@ If the TLF set and the protocol/SAP disagree on a population definition or count
 biostatistician before source_facts is finalised, naming both values and both citations. If a requested fact has no
 table or SAP section behind it, report it as unavailable rather than sourcing it from prose or judgement.
 ### Error Handling
-- validate_contract.py exits 1: list each INVALID line, fix the payload shape (never the values), re-run.
+- validate_contract.py exits 1: list each INVALID line, fix the payload shape (never the values), re-run. A
+  `citation` shorter than minLength (an empty citation) means the fact is ungrounded: cite its table/section from the
+  source, or remove the fact and report it as not found - never type in a citation you did not read.
 - validate_contract.py exits 2 or a source file cannot be read: stop and ask for the file; do not ingest from memory.
 - A figure appears only in draft prose (for example a stale interim number): exclude it and flag it for
   consistency-check.

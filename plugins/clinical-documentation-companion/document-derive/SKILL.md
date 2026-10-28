@@ -18,20 +18,25 @@ when the request mixes drafting with sending ("draft it and fax it"): draft, and
 - A clinician-to-clinician handoff - use handoff-draft instead.
 ## Inputs
 note_signature (signed must be true); encounter; note_facts with citations from note-context, including
-`referral_indicated`, `active_medications`, `patient_instructions` and `follow_up_plan`.
+`referral_indicated`, `active_medications`, `patient_instructions` and `follow_up_plan`, each with its
+`statements[]` (one cited entry per documented medication, instruction or follow-up statement).
 ## Steps
 1. Confirm `note_signature.signed` is true; if not, write `halt{halted: "unsigned_note"}` and escalate - never
    draft from an unsigned note (clinical-doc-rules.md #5).
-2. If a note_fact needed for a sentence is missing from the contract, run note-context for it first; never draft
-   from the raw note directly and never draft the sentence without it.
+2. If a note_fact needed for a sentence is missing from the contract - or one of `active_medications`,
+   `patient_instructions`, `follow_up_plan` or a true `referral_indicated` has `value: true` but no `statements[]` -
+   run note-context for it first; never draft from the raw note directly and never draft the sentence without it.
 3. Draft only the artefacts the user asked for (all three only when asked to "run the downstream documents").
 4. Referral: check `referral_indicated`. If false or absent, set `referral_letter: null` and
    `referral_decision = {drafted: false, reason, citation}`, and say so. If true, draft the letter from cited
-   note_facts only, attaching each supporting citation, and set `referral_decision.drafted = true`.
-5. After-visit summary: plain patient language, one statement per cited note_fact, no general teaching text, no
-   reassurance the note does not contain. A symptom the plan does not address is listed for clinician review,
-   not explained to the patient.
-6. Care-plan update (if asked): cited to the note_facts, written to `care_plan_update`.
+   note_facts only - every `statements[]` entry of `referral_indicated`, `active_medications` and
+   `follow_up_plan` - attaching each supporting citation, and set `referral_decision.drafted = true`.
+5. After-visit summary: plain patient language, one sentence per cited `statements[]` entry of
+   `active_medications`, `patient_instructions` and `follow_up_plan` - every entry, so no medication, instruction
+   or follow-up item is dropped - and no general teaching text, no reassurance the note does not contain. A symptom
+   the plan does not address is listed for clinician review, not explained to the patient.
+6. Care-plan update (if asked): cited to the note_facts and every relevant `statements[]` entry, written to
+   `care_plan_update`.
 7. Write each artefact as `{"status": "draft", "action_level": "L1", "text": "<document>", "citations":
    [{source, locator, text}]}` and hand back for clinician review before release. If asked to send, fax, file or
    push to a portal, decline in one line.
@@ -46,7 +51,8 @@ Contract JSON, sections: `referral_letter` (draft or null), `referral_decision`,
   "citation": {"source": "DocumentReference/NOTE-91004-20260911", "locator": "Plan, line 10", "text": "No referral indicated this visit."}}
 ```
 ## Grounding requirements
-Every derived document sentence traces to a note_facts entry and carries that entry's citation on the contract. Do
+Every derived document sentence traces to a note_facts entry - or one of its `statements[]` - and carries that
+citation on the contract; every cited statement the document needs appears, none is silently dropped. Do
 not fabricate, embellish or infer clinical content - no finding, diagnosis, result, instruction or reassurance that
 is not in the signed note, even if the requester asserts it or it would make the letter read better. An uncited
 sentence must be deleted, not softened.

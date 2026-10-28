@@ -2,7 +2,7 @@
  "$schema": "http://json-schema.org/draft-07/schema#",
  "$id": "hls.clinical-documentation-companion.v1",
  "title": "Clinical Documentation Companion contract v1",
- "description": "Chains note-context -> document-derive -> coding-rationale -> quality-gap-check -> handoff-draft. Citations ride the contract: every fact, every supported claim element and every derived document carries its grounding. Plugin 1.0.1 adds additive, backward-compatible fields: messages, care_plan_update, referral_decision, halt, omission/code-change refusal logs and note_citation on gaps and unsupported flags. Plugin 1.0.2: `encounter` is optional in an unsigned-note halt record; override_attempts_refused.detected_via gains 'messages' (words from the live chat message).",
+ "description": "Chains note-context -> document-derive -> coding-rationale -> quality-gap-check -> handoff-draft. Citations ride the contract: every fact, every supported claim element and every derived document carries its grounding. Plugin 1.0.1 adds additive, backward-compatible fields: messages, care_plan_update, referral_decision, halt, omission/code-change refusal logs and note_citation on gaps and unsupported flags. Plugin 1.0.2: `encounter` is optional in an unsigned-note halt record; override_attempts_refused.detected_via gains 'messages' (words from the live chat message). Plugin 1.0.3: cited_fact gains optional statements[] (one cited entry per documented medication, instruction or follow-up statement).",
  "standards_alignment": {
   "family": "HL7 FHIR R4 / US Core 6.1 / USCDI v3",
   "rationale": "Clinical encounter and quality-measure data map to existing FHIR resources, so customer EHR data lands without a universal data model (Industry Templates standard section 6).",
@@ -105,6 +105,27 @@
     },
     "citation": {
      "$ref": "#/definitions/citation"
+    },
+    "statements": {
+     "type": "array",
+     "description": "Plugin 1.0.3. Every relevant statement the note documents for a multi-statement fact (active_medications, patient_instructions, follow_up_plan, referral_indicated), each with its own citation, so downstream drafts never lose a second medication, instruction or follow-up item. When present and non-empty, `value` is true and `citation` repeats the first statement's citation.",
+     "items": {
+      "type": "object",
+      "required": [
+       "text",
+       "citation"
+      ],
+      "properties": {
+       "text": {
+        "type": "string",
+        "minLength": 1,
+        "description": "The statement as documented in the note."
+       },
+       "citation": {
+        "$ref": "#/definitions/citation"
+       }
+      }
+     }
     }
    }
   },

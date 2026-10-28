@@ -4,7 +4,8 @@
   python3 base/scripts/validate_contract.py --payload <payload.json>
 
 Supports the draft-07 subset the contract uses (type, required, properties, additionalProperties,
-items, enum, const, $ref to #/definitions). jsonschema is not needed and is not available offline.
+items, enum, const, minLength, maxLength, $ref to #/definitions). jsonschema is not needed and is not
+available offline. minLength is what makes an empty citation ("") invalid, so an ungrounded fact cannot pass.
 Exit 0 = valid, 1 = invalid (every violation printed), 2 = payload or contract unreadable.
 Also reports source_facts keys that are not in config/field-dictionary.json (advisory, never a failure).
 """
@@ -39,6 +40,11 @@ def check(value, schema, root, path, errors):
         if not any(type_ok(value, x) for x in allowed):
             errors.append(f"{path}: expected type {t}, got {type(value).__name__}")
             return
+    if isinstance(value, str):
+        if "minLength" in schema and len(value) < schema["minLength"]:
+            errors.append(f"{path}: string shorter than minLength {schema['minLength']} (got {len(value)})")
+        if "maxLength" in schema and len(value) > schema["maxLength"]:
+            errors.append(f"{path}: string longer than maxLength {schema['maxLength']} (got {len(value)})")
     if isinstance(value, dict):
         for req in schema.get("required", []):
             if req not in value:
