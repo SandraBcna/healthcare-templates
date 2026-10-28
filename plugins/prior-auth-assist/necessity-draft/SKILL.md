@@ -1,7 +1,7 @@
 ---
 name: necessity-draft
 description: "Writes the medical-necessity narrative that accompanies a pending prior-auth request, using only criteria the engine marked met and cited. Use when the user says \"write the medical-necessity letter for this MRI request\", \"draft the clinical justification for the auth\", \"explain to the plan why this procedure is needed\", \"put together the necessity narrative\". Do NOT use to list what is still missing or check packet readiness - use gap-report instead; do NOT use to decide whether the criteria are met - use criteria-extract instead; do NOT use to argue against a decision the payer has already made - use the denials-appeals-response plugin instead. Never writes approval, denial or clearance language."
-license: Proprietary
+license: MIT
 metadata: {version: "1.0.3", author: Microsoft Healthcare & Life Sciences Skills, category: analysis, domain: "Prior Authorisation", action_level: "L1", risk: "high", icon: Compose}
 ---
 # Necessity Draft

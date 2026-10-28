@@ -1,7 +1,7 @@
 ---
 name: denial-classify
 description: "Parses a post-service denial letter or remittance (X12 835 / EOB) into denial type, CARC/RARC reason codes, amounts and appeal level, with every field cited to its source. Use when asked \"we got a denial from Contoso\", \"what kind of denial is this\", \"read this remittance / EOB / 835\", \"why was this claim denied\", \"start an appeal on claim CLM-10021\". Use at the start of every denials-and-appeals run. Do NOT use for pre-service prior-authorization denials - use the prior-auth-assist plugin instead; do NOT use to draft or redraft the appeal letter - use appeal-draft instead; do NOT use to pull chart documentation - use evidence-assemble instead; do NOT use for payer policy (use policy-retrieve instead) or deadlines (use deadline-track instead); do NOT use to create or edit Word files - use docx instead. Action level L0: reads and classifies only."
-license: Proprietary
+license: MIT
 metadata: {version: "1.0.3", author: Microsoft Healthcare & Life Sciences Skills, category: analysis, domain: "Revenue Cycle", action_level: L0, max_action_level: L1, icon: ReceiptMoney}
 ---
 # Denial Classify

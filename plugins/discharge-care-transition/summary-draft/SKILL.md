@@ -1,7 +1,7 @@
 ---
 name: summary-draft
 description: 'Drafts the clinician-facing discharge summary - course, procedures, results, medications, disposition - fully cited and marked draft for signature. Use when the user says "draft the discharge summary", "write up the hospital course", "put the discharge summary together" or "get the discharge summary ready for signature". Requests to finalize or sign it are answered with the draft still marked pending clinician signature. Do NOT use for the medication diff - use med-reconcile instead; do NOT use for patient-facing plain language - use patient-instructions instead; do NOT use for the admission narrative - use admission-synthesise instead; do NOT use to sign, file or transmit anything into the chart.'
-license: Proprietary
+license: MIT
 metadata: {version: "1.0.3", author: Microsoft Healthcare & Life Sciences Skills, category: writing, domain: "Discharge Planning", action_level: "L1", action_levels_supported: "L0/L1 only", icon: DocumentText}
 ---
 # Summary Draft

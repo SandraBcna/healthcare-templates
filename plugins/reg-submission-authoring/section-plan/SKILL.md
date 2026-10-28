@@ -9,7 +9,7 @@ description: >-
   consistency-check instead. Do NOT use for outlining general Word documents or business reports - use the
   built-in docx skill instead. Only structures with a template in config are supported. Guardrail: plans only;
   never marks a section ready on a missing fact and never invents a structure.
-license: Proprietary
+license: MIT
 metadata: {version: "1.0.3", author: Microsoft Healthcare & Life Sciences Skills, category: analysis, domain: "Pharma / MedTech Regulatory & Quality", action_level: L0, icon: DocumentFlowchart}
 ---
 # Section Plan

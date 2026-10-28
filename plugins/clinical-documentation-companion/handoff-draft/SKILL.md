@@ -1,7 +1,7 @@
 ---
 name: handoff-draft
 description: "Drafts the clinician-to-clinician handoff for the encounter with every open quality gap and unsupported claim element listed explicitly as an open item. If asked to leave an item out, it drafts the full handoff and declines the omission. Use when the user says \"write the handoff\", \"sign-out note for the next clinician\", \"what should the covering doctor know?\", \"summarise this visit for the care team\" or \"hand this over to the night team\". Do NOT use for patient-facing summaries - use document-derive instead; do NOT use to compute measure status - use quality-gap-check instead; do NOT use to build or explain claim evidence - use coding-rationale instead; do NOT use to extract facts from the note - use note-context instead."
-license: Proprietary
+license: MIT
 metadata: {version: "1.0.3", author: Microsoft Healthcare & Life Sciences Skills, category: communication, domain: "Clinical Documentation", action_level: "L1", icon: PersonArrowRight}
 ---
 # Handoff Draft

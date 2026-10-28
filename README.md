@@ -56,5 +56,4 @@ coverage decision.
 
 ## Licence
 
-The plugins are **Proprietary**, as declared in each skill's `SKILL.md`. No open-source licence is
-granted.
+MIT, see [LICENSE](LICENSE). This matches the Microsoft-built skills in [CAT Agent Skills](https://github.com/microsoft/cat-agent-skills).

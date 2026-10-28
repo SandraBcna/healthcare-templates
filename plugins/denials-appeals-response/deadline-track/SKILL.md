@@ -1,7 +1,7 @@
 ---
 name: deadline-track
 description: "Deterministic engine: calculates the appeal deadline and days remaining from today, flags urgent and expired deadlines on every queued claim, ranks the queue by deadline then recoverable value, and enforces the coding-integrity boundary. Use when asked \"when is this appeal due\", \"how many days do we have left\", \"which denial should we work first\", \"can we recode this to a 99215 and refile\", \"that payer isn't in our config, just use 30 days\". Run before appeal-draft and again as the last step of every run. Do NOT use for drafting the letter - use appeal-draft instead; do NOT use for gathering evidence - use evidence-assemble instead; do NOT use for payer policy - use policy-retrieve instead. Never applies a coding change: refused recodes go to a human as an evidence gap. Action level L0: calculates and ranks only."
-license: Proprietary
+license: MIT
 metadata: {version: "1.0.3", author: Microsoft Healthcare & Life Sciences Skills, category: analysis, domain: "Revenue Cycle", action_level: L0, max_action_level: L1, icon: CalendarClock}
 ---
 # Deadline Track

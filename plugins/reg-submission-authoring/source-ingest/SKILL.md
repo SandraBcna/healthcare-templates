@@ -9,7 +9,7 @@ description: >-
   or assembling submission sections - use section-draft or submission-assemble instead. Do NOT use for
   reconciling a patient's medications - use the discharge-care-transition plugin instead. Guardrail: reads and
   cites sources only; never estimates, rounds or invents a fact.
-license: Proprietary
+license: MIT
 metadata: {version: "1.0.3", author: Microsoft Healthcare & Life Sciences Skills, category: analysis, domain: "Pharma / MedTech Regulatory & Quality", action_level: L0, icon: DocumentTable}
 ---
 # Source Ingest

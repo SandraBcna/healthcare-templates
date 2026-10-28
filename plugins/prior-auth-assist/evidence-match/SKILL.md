@@ -1,7 +1,7 @@
 ---
 name: evidence-match
 description: "Finds the specific chart notes, dates and verbatim quotes that back a prior-auth request and attaches them as citations. Use when the user says \"where in the chart does it show the conservative therapy\", \"find the notes supporting this auth request\", \"cite the documentation for the MRI request\", \"pull the PT records for this order\". Do NOT use to decide whether the payer's criteria are met - use criteria-extract instead; do NOT use to write the justification - use necessity-draft instead; do NOT use to list what is still missing - use gap-report instead; do NOT use to audit a completed encounter's documentation or coding - use the clinical-documentation-companion plugin instead."
-license: Proprietary
+license: MIT
 metadata: {version: "1.0.3", author: Microsoft Healthcare & Life Sciences Skills, category: analysis, domain: "Prior Authorisation", action_level: "L0", risk: "high", icon: DocumentSearch}
 ---
 # Evidence Match

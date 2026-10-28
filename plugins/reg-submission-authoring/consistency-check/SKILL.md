@@ -10,7 +10,7 @@ description: >-
   instead. Do NOT use for reconciling medication lists or payer criteria - use the discharge-care-transition
   or prior-auth-assist plugin instead. Guardrail: reports only; never edits a draft, never waives a finding
   and never calls a number close enough.
-license: Proprietary
+license: MIT
 metadata: {version: "1.0.3", author: Microsoft Healthcare & Life Sciences Skills, category: analysis, domain: "Pharma / MedTech Regulatory & Quality", action_level: L0, icon: DocumentCheckmark}
 ---
 # Consistency Check

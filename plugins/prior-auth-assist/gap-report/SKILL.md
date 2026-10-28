@@ -1,7 +1,7 @@
 ---
 name: gap-report
 description: "After the criteria check has run, lists every piece of evidence still missing from a prior-auth packet and presents the packet as a draft for review. Use when the user says \"what's still missing before we submit this auth\", \"what does the payer still need from us\", \"assemble the submission packet for review\", \"give me the outstanding items on this request\". Do NOT use to check whether the patient meets the payer's criteria or why a request would be pushed back - use criteria-extract instead; do NOT use to locate documents in the chart - use evidence-match instead; do NOT use for general Word reports or documents - use docx instead; do NOT use on a claim the payer already denied - use the denials-appeals-response plugin instead. Never submits, files or uploads anything."
-license: Proprietary
+license: MIT
 metadata: {version: "1.0.3", author: Microsoft Healthcare & Life Sciences Skills, category: analysis, domain: "Prior Authorisation", action_level: "L1", risk: "high", icon: DocumentQuestionMark}
 ---
 # Gap Report

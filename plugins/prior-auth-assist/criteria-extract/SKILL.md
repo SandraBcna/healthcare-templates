@@ -1,7 +1,7 @@
 ---
 name: criteria-extract
 description: "Checks a specific patient's pending prior-auth request against the payer's coverage-policy checklist, clause by clause, and reports which criteria the chart satisfies and which are still open. Use when the user says \"does this patient meet Contoso's criteria for the procedure\", \"does this patient qualify for the MRI under the plan's policy\", \"run the auth criteria check on this order\", \"are we ready to request auth yet\", \"why would this request get pushed back\". Do NOT use to look up which payer policy or clause governs a service - use policy-ingest instead; do NOT use to hunt through the chart for source notes - use evidence-match instead; do NOT use for coding or documentation gaps on a finished encounter - use the clinical-documentation-companion plugin instead. Never renders an approval or a denial."
-license: Proprietary
+license: MIT
 metadata: {version: "1.0.3", author: Microsoft Healthcare & Life Sciences Skills, category: analysis, domain: "Prior Authorisation", action_level: "L0", risk: "high", icon: ClipboardCheckmark}
 ---
 # Criteria Extract

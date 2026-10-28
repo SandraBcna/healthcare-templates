@@ -1,7 +1,7 @@
 ---
 name: quality-gap-check
 description: "Deterministic engine that scores the encounter against the configured quality measures from documented, cited facts only, and refuses, logs and escalates any attempt to change a measure's status however it is worded. Use when the user says \"which quality measures are open?\", \"run the gap check\", \"mark this measure as met\", \"can you just count this one?\" or \"note that it was likely done so it counts this quarter\". Do NOT use for supporting evidence for a claim code - use coding-rationale instead; do NOT use to draft documents or the handoff - use document-derive or handoff-draft instead; do NOT use to extract facts from the note - use note-context instead."
-license: Proprietary
+license: MIT
 metadata: {version: "1.0.3", author: Microsoft Healthcare & Life Sciences Skills, category: analysis, domain: "Clinical Documentation", action_level: "L0", icon: ClipboardError}
 ---
 # Quality Gap Check

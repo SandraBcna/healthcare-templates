@@ -1,7 +1,7 @@
 ---
 name: policy-ingest
 description: "Finds which payer coverage policy governs an ordered service and writes its exact clause key into the prior-auth packet. Use when the user says \"which Contoso policy covers a lumbar MRI\", \"what are the payer's rules for this procedure\", \"look up the coverage policy before we request auth\", \"which clause applies to this order\". Do NOT use to read the chart or gather notes - use evidence-match instead; do NOT use to judge whether this patient qualifies - use criteria-extract instead; do NOT use to write the necessity narrative - use necessity-draft instead; do NOT use to report outstanding items - use gap-report instead; do NOT use on a policy already applied to a denied claim - use the denials-appeals-response plugin instead. An unlisted service is handed on as out_of_scope, never matched to a near-miss clause."
-license: Proprietary
+license: MIT
 metadata: {version: "1.0.3", author: Microsoft Healthcare & Life Sciences Skills, category: analysis, domain: "Prior Authorisation", action_level: "L0", risk: "high", icon: BookSearch}
 ---
 # Policy Ingest

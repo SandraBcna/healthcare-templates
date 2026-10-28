@@ -1,7 +1,7 @@
 ---
 name: coding-rationale
 description: "Assembles the cited documentation evidence for the visit level and diagnosis codes already on the claim and flags every element the note does not support. If asked to change, pick or upgrade a code it still builds the rationale and declines the change. Use when the user says \"why is this coded 99214?\", \"does the note support this diagnosis?\", \"build the coding rationale\", \"what backs up this claim?\" or \"the coder is asking for the evidence\". Do NOT use for quality-measure status - use quality-gap-check instead; do NOT use for documentation drafting - use document-derive instead; do NOT use to extract facts from the note - use note-context instead."
-license: Proprietary
+license: MIT
 metadata: {version: "1.0.3", author: Microsoft Healthcare & Life Sciences Skills, category: analysis, domain: "Clinical Documentation", action_level: "L1", icon: TextQuote}
 ---
 # Coding Rationale

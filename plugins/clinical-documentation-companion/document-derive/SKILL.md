@@ -1,7 +1,7 @@
 ---
 name: document-derive
 description: "Drafts the clinical artefacts that follow a signed note - referral letter, after-visit summary, care-plan update - each cited to the note and marked draft. It never sends, faxes or files, and if the note indicates no referral it says so instead of drafting one. Use when the user says \"draft the referral letter\", \"write the after-visit summary\", \"AVS for this visit\", \"send the patient home with instructions\" or \"update the care plan from today's note\". Do NOT use for Word/PDF formatting or letterhead on an existing document - use the built-in docx instead; do NOT use for coding evidence - use coding-rationale instead; do NOT use for a clinician-to-clinician handoff - use handoff-draft instead."
-license: Proprietary
+license: MIT
 metadata: {version: "1.0.3", author: Microsoft Healthcare & Life Sciences Skills, category: writing, domain: "Clinical Documentation", action_level: "L1", icon: DocumentArrowRight}
 ---
 # Document Derive

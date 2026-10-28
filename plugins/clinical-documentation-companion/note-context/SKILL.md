@@ -1,7 +1,7 @@
 ---
 name: note-context
 description: "Reads a signed encounter note into structured, cited clinical facts as the entry hop of the clinical-documentation-companion chain; if the note is unsigned or still a draft it halts and escalates to the clinician instead. Use when the user says \"pull the facts out of today's note\", \"structure this visit note\", \"what did the note actually document?\", \"start the documentation run for this encounter\" or \"set up the encounter context\". Do NOT use for drafting letters or summaries - use document-derive instead; do NOT use for measure status - use quality-gap-check instead; do NOT use to check whether the note supports a claim code - use coding-rationale instead; do NOT use to write a clinician handoff or sign-out - use handoff-draft instead."
-license: Proprietary
+license: MIT
 metadata: {version: "1.0.3", author: Microsoft Healthcare & Life Sciences Skills, category: analysis, domain: "Clinical Documentation", action_level: "L0", icon: NotepadPerson}
 ---
 # Note Context

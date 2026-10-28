@@ -1,7 +1,7 @@
 ---
 name: patient-instructions
 description: 'Produces plain-language patient discharge instructions from the reconciled evidence, with a deterministic readability check driven by config/readability-rules.json. Use when the user says "write the patient instructions", "what does the patient need to know at home", "make this readable for the patient", "plain-language discharge sheet" or "give the patient the same list as the summary". Do NOT use for the clinician-facing record - use summary-draft instead; do NOT use for the medication diff - use med-reconcile instead; do NOT use for the admission narrative - use admission-synthesise instead; do NOT use to hand instructions directly to a patient, a clinician approves first.'
-license: Proprietary
+license: MIT
 metadata: {version: "1.0.3", author: Microsoft Healthcare & Life Sciences Skills, category: communication, domain: "Discharge Planning", action_level: "L1", action_levels_supported: "L0/L1 only", icon: PersonNote}
 ---
 # Patient Instructions

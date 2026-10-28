@@ -1,7 +1,7 @@
 ---
 name: policy-retrieve
 description: "Pulls the governing payer policy clause, contract term and coding guidance for a denial reason and attaches them as citations, or reports that none was found. Use when asked \"what policy does this denial cite\", \"find the Contoso medical policy for CO-50\", \"which contract term applies here\", \"what does the payer's policy actually say\". Use after denial-classify, on every denial. Do NOT use to search the patient's chart - use evidence-assemble instead; do NOT use to write the appeal letter - use appeal-draft instead; do NOT use to compute deadlines - use deadline-track instead. Never quotes policy from memory. Action level L0: retrieves and cites only, never submits or negotiates anything."
-license: Proprietary
+license: MIT
 metadata: {version: "1.0.3", author: Microsoft Healthcare & Life Sciences Skills, category: research, domain: "Revenue Cycle", action_level: L0, max_action_level: L1, icon: BookSearch}
 ---
 # Policy Retrieve

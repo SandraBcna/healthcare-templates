@@ -10,7 +10,7 @@ description: >-
   NOT use for filing or submitting to a regulator - use the sponsor's validated gateway, operated by a human,
   instead. Guardrail: draft for human approval only (L1); status is draft_clean or draft_open_items, never
   submitted.
-license: Proprietary
+license: MIT
 metadata: {version: "1.0.3", author: Microsoft Healthcare & Life Sciences Skills, category: writing, domain: "Pharma / MedTech Regulatory & Quality", action_level: L1, icon: DocumentMultiple}
 ---
 # Submission Assemble

@@ -1,7 +1,7 @@
 ---
 name: appeal-draft
 description: "Drafts the level-appropriate appeal letter from the cited policy clause and chart evidence already on the contract, with the deadline status in the header. Use when asked to \"draft the appeal letter\", \"write the appeal for this denial\", \"put together our response to Contoso\", \"redraft this appeal on the original code\". Use after evidence-assemble and deadline-track. Do NOT use to classify a new denial or \"start an appeal\" from a remittance - use denial-classify instead; do NOT use to gather evidence - use evidence-assemble instead; do NOT use to find policy - use policy-retrieve instead; do NOT use to compute the deadline - use deadline-track instead. Never sends, files or uploads the appeal: hand it to the human coordinator. Action level L0: draft text only."
-license: Proprietary
+license: MIT
 metadata: {version: "1.0.3", author: Microsoft Healthcare & Life Sciences Skills, category: writing, domain: "Revenue Cycle", action_level: L0, max_action_level: L1, icon: DocumentEdit}
 ---
 # Appeal Draft

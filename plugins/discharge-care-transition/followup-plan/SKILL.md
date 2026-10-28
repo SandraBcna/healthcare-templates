@@ -1,7 +1,7 @@
 ---
 name: followup-plan
 description: 'Extracts follow-up appointments, pending results and referral orders into an owned, dated, cited checklist, verified by the followup_check engine. Use when the user says "what follow-up does this patient need", "build the follow-up checklist", "who is chasing the pending labs", "list the follow-up appointments to arrange" or "just list the pending potassium recheck". Do NOT use for the medication diff - use med-reconcile instead; do NOT use for the summary or the patient sheet - use summary-draft or patient-instructions instead; do NOT use for the admission narrative - use admission-synthesise instead; do NOT use to book, send or close anything.'
-license: Proprietary
+license: MIT
 metadata: {version: "1.0.3", author: Microsoft Healthcare & Life Sciences Skills, category: productivity, domain: "Discharge Planning", action_level: "L1", action_levels_supported: "L0/L1 only", icon: CalendarCheckmark}
 ---
 # Followup Plan

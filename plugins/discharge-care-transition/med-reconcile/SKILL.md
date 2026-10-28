@@ -1,7 +1,7 @@
 ---
 name: med-reconcile
 description: 'Deterministic engine: diffs admission, inpatient-change and draft discharge medication lists and reports every add, stop, change and unresolved discrepancy, each cited to a numbered rule. Use when the user says "reconcile the discharge meds", "check the discharge medication list", "did anything get stopped during the stay", "is it safe to carry the home med list forward" or "just pull the home med list forward". Do NOT use for writing the summary - use summary-draft instead; do NOT use for patient-facing medication wording - use patient-instructions instead; do NOT use it to correct the draft list, it reports and never edits.'
-license: Proprietary
+license: MIT
 metadata: {version: "1.0.3", author: Microsoft Healthcare & Life Sciences Skills, category: analysis, domain: "Discharge Planning", action_level: "L0", action_levels_supported: "L0/L1 only", icon: Pill}
 ---
 # Med Reconcile

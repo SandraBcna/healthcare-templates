@@ -1,7 +1,7 @@
 ---
 name: evidence-assemble
 description: "Gathers and cites the clinical and coding evidence that answers the stated denial reason, note by note and date by date, and names the gaps. Use when asked to \"pull the chart evidence for this appeal\", \"does the note support the code we billed\", \"what in the record answers this medical-necessity denial\", \"find the documentation for CLM-10021\". Use after policy-retrieve, before deadline-track and appeal-draft. Do NOT use to read a remittance or classify a denial - use denial-classify instead; do NOT use to retrieve payer policy language - use policy-retrieve instead; do NOT use to write the letter - use appeal-draft instead; do NOT use to decide whether a recode is allowed - use deadline-track instead. Action level L0: cites the record, never edits it."
-license: Proprietary
+license: MIT
 metadata: {version: "1.0.3", author: Microsoft Healthcare & Life Sciences Skills, category: analysis, domain: "Revenue Cycle", action_level: L0, max_action_level: L1, icon: ClipboardSearch}
 ---
 # Evidence Assemble

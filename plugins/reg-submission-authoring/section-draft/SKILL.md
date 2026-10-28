@@ -9,7 +9,7 @@ description: >-
   source-ingest instead. Do NOT use for verifying a draft's figures - use consistency-check instead. Do NOT use
   for appeal letters, clinical notes or discharge summaries - use the matching HLS plugin instead. Guardrail:
   drafts for human approval only (L1); never asserts an unsourced number or harmonises two figures.
-license: Proprietary
+license: MIT
 metadata: {version: "1.0.3", author: Microsoft Healthcare & Life Sciences Skills, category: writing, domain: "Pharma / MedTech Regulatory & Quality", action_level: L1, icon: Compose}
 ---
 # Section Draft

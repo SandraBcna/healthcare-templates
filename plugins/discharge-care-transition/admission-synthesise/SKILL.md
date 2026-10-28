@@ -1,7 +1,7 @@
 ---
 name: admission-synthesise
 description: 'Builds the cited admission narrative (encounter, admission medications, inpatient changes) from notes, procedures, results and the problem list, as the entry hop of the discharge packet. Use when the user says "prep the discharge packet", "start the discharge packet", "pull together the hospital course", "what happened during this admission" or "summarise the stay for discharge". Do NOT use for medication reconciliation - use med-reconcile instead; do NOT use for the discharge summary prose - use summary-draft instead; do NOT use for patient-facing text - use patient-instructions instead; do NOT use for outpatient or pre-admission workups.'
-license: Proprietary
+license: MIT
 metadata: {version: "1.0.3", author: Microsoft Healthcare & Life Sciences Skills, category: analysis, domain: "Discharge Planning", action_level: "L0", action_levels_supported: "L0/L1 only", icon: Bed}
 ---
 # Admission Synthesise
