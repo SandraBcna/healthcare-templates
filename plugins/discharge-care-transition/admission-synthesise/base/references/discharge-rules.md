@@ -7,7 +7,9 @@ Starter grounding - a facility replaces this file with its own SOP and edits `co
 `med-reconcile` computes expected_discharge_meds by applying admission_meds + inpatient_changes (stops removed,
 starts added, changes applied), then diffs it against draft_discharge_meds. Any admission medication that was
 stopped in-house for a documented reason and reappears in draft_discharge_meds without a new order is an
-**unresolved discrepancy** - it is never silently dropped from the diff or silently allowed through.
+**unresolved discrepancy** - it is never silently dropped from the diff or silently allowed through. A later
+documented `start` of the same drug is that new order: it supersedes the earlier stop, so the drug is expected
+(active) and is no longer listed on `reconciliation_report.stopped_meds` (1.0.3).
 Engine discrepancy type: `unresolved_stop_reappeared`.
 
 ## #2 Discharge summary is a legal record

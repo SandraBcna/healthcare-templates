@@ -59,6 +59,7 @@ def main():
             expected.pop(drug, None)
             stopped[drug] = c
         elif action == "start":
+            stopped.pop(drug, None)                   # 1.0.3: a later documented restart supersedes the stop
             expected[drug] = {"drug": drug, "dose": c.get("dose"), "status": "active",
                               "reason": c.get("reason"), **cite(c)}
         elif action == "change":

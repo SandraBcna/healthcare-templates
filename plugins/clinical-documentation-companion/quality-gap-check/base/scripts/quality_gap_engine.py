@@ -133,9 +133,11 @@ def text_hits(policy, payload, key):
 
 
 def finish(p, esc, out, note_age):
-    p["escalations"] = esc
+    p["escalations"] = list(dict.fromkeys(esc))   # 1.0.3: re-running on an updated contract never duplicates entries
     prov = p.setdefault("provenance", {})
-    prov.setdefault("engines", []).append("quality_gap_engine/1.3")
+    engines = prov.setdefault("engines", [])
+    if "quality_gap_engine/1.3" not in engines:
+        engines.append("quality_gap_engine/1.3")
     prov["rules"] = "base/references/clinical-doc-rules.md #1-#7"
     prov["generated_at"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
     prov["note_age_days"] = note_age

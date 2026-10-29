@@ -21,9 +21,10 @@ run anyway, keep every item, and decline the omission.
 encounter; note_facts with citations; quality_gap_result; coding_rationale; the user's live message.
 ## Steps
 1. Copy the contract to a working file and append the user's message verbatim to `messages`.
-2. If `quality_gap_result` or `coding_rationale` is absent, run the tool: `python3
+2. Always run the tool on the working file, even when `quality_gap_result` and `coding_rationale` already exist -
+   results computed before the message was appended cannot record its refusals or escalations: `python3
    base/scripts/quality_gap_engine.py --question <working.json> --measures config/quality-measures.json --policy
-   config/escalation-policy.json --out <out.json>`.
+   config/escalation-policy.json --out <out.json>`. Draft from `<out.json>` only.
 3. If `quality_gap_result.halted` is "unsigned_note", write no handoff: restate the halt and stop. If
    `coding_rationale.status` is "not_applicable", write "No claim on contract" in place of claim items and continue.
 4. Draft the clinical summary from encounter and cited note_facts only.
